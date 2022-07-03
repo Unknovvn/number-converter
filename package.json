@@ -1,0 +1,27 @@
+{
+  "name": "number-converter",
+  "version": "1.0.0",
+  "description": "Number to language converter",
+  "main": "lib/index.js",
+  "types": "lib",
+  "scripts": {
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Unknovvn/number-converter.git"
+  },
+  "keywords": [
+    "Number",
+    "Converter"
+  ],
+  "author": "Andžej Korovacki <Andrzej.Korovacki@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Unknovvn/number-converter/issues"
+  },
+  "homepage": "https://github.com/Unknovvn/number-converter#readme",
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}
