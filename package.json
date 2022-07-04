@@ -1,6 +1,6 @@
 {
   "name": "@unknovvn/number-converter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Number to language converter",
   "author": "Andžej Korovacki <Andrzej.Korovacki@gmail.com>",
   "license": "MIT",
