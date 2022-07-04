@@ -30,7 +30,11 @@ pnpm install @unknovvn/number-converter
 
 ## Usage
 
-TBU
+```js
+const { toEnglish } = require("@unknovvn/number-converter");
+
+const englishConvertedNumber = toEnglish(8); // eight
+```
 
 ## Contributors
 
