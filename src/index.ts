@@ -1,5 +1,5 @@
-import { convertNumber as toEnglish } from "./english/converter";
+import { convertNumber as convertNumberToEnglish } from "./english/converter";
 
-export default {
-  toEnglish,
-};
+export function toEnglish(number: number): string {
+  return convertNumberToEnglish(number);
+}
