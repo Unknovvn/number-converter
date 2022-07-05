@@ -1,47 +1,58 @@
 import Scale from "./scale";
 
-const scales_biggest_to_smallest = [
-  new Scale(1_000_000_000_000_000, "quadrillion"),
-  new Scale(1_000_000_000_000, "trillion"),
-  new Scale(1_000_000_000, "billion"),
-  new Scale(1_000_000, "million"),
-  new Scale(1000, "thousand"),
-  new Scale(100, "hundred"),
+var scales_biggest_to_smallest = [
+  new Scale(1_000_000_000_000_000, "biliard", "biliardy", "biliardów"),
+  new Scale(1_000_000_000_000, "bilion", "biliony", "bilionów"),
+  new Scale(1_000_000_000, "miliard", "miliardy", "miliardów"),
+  new Scale(1_000_000, "milion", "miliony", "milionów"),
+  new Scale(1000, "tysiąc", "tysiące", "tysięcy"),
 ];
 
 var zero_to_nineteen_names = [
   "zero",
-  "one",
-  "two",
-  "three",
-  "four",
-  "five",
-  "six",
-  "seven",
-  "eight",
-  "nine",
-  "ten",
-  "eleven",
-  "twelve",
-  "thirteen",
-  "fourteen",
-  "fifteen",
-  "sixteen",
-  "seventeen",
-  "eighteen",
-  "nineteen",
+  "jeden",
+  "dwa",
+  "trzy",
+  "cztery",
+  "pięć",
+  "sześć",
+  "siedem",
+  "osiem",
+  "dziewięć",
+  "dziesięć",
+  "jedenaście",
+  "dwanaście",
+  "trzynaście",
+  "czternaście",
+  "piętnaście",
+  "szesnaście",
+  "siedemnaście",
+  "osiemnaście",
+  "dziewiętnaście",
 ];
 
 var tens_names = [
-  "ten",
-  "twenty",
-  "thirty",
-  "forty",
-  "fifty",
-  "sixty",
-  "seventy",
-  "eighty",
-  "ninety",
+  "dziesięć",
+  "dwadzieścia",
+  "trzydzieści",
+  "czterdzieści",
+  "pięćdziesiąt",
+  "sześćdziesiąt",
+  "siedemdziesiąt",
+  "osiemdziesiąt",
+  "dziewięćdziesiąt",
+];
+
+var hundreds_names = [
+  "sto",
+  "dwieście",
+  "trzysta",
+  "czterysta",
+  "pięćset",
+  "sześćset",
+  "siedemset",
+  "osiemset",
+  "dziewięćset",
 ];
 
 const formatResult = (isNegative: boolean, number: string): string => {
@@ -60,7 +71,7 @@ const formatZeroToHundred = (number: number): string => {
   const tens = Math.floor(number / 10);
   const remainingDigits = number % 10;
   if (remainingDigits > 0) {
-    return tens_names[tens - 1] + "-" + zero_to_nineteen_names[remainingDigits];
+    return tens_names[tens - 1] + " " + zero_to_nineteen_names[remainingDigits];
   }
 
   return tens_names[tens - 1];
@@ -71,22 +82,19 @@ const formatZeroToThousand = (number: number): string => {
     return zero_to_nineteen_names[number];
   }
 
-  const hundredScale =
-    scales_biggest_to_smallest[scales_biggest_to_smallest.length - 1];
+  const amountOfHundreds = Math.floor(number / 100);
   const remainder = number % 100;
 
-  if (number > hundredScale.getValue()) {
-    const amountOfHundreds = Math.floor(number / hundredScale.getValue());
-
+  if (amountOfHundreds > 0) {
     if (remainder > 0) {
       return (
-        hundredScale.format(formatZeroToThousand(amountOfHundreds)) +
+        hundreds_names[amountOfHundreds - 1] +
         " " +
         formatZeroToHundred(remainder)
       );
     }
 
-    return hundredScale.format(formatZeroToThousand(amountOfHundreds));
+    return hundreds_names[amountOfHundreds - 1];
   }
 
   if (remainder > 0) {
@@ -116,7 +124,7 @@ export const convertNumber = (number: number): string => {
   for (const scale of scales_biggest_to_smallest) {
     if (remainder >= scale.getValue()) {
       const amount = Math.floor(remainder / scale.getValue());
-      resultArray.push(scale.format(formatZeroToThousand(amount)));
+      resultArray.push(scale.format(amount, formatZeroToThousand(amount)));
       remainder -= scale.getValue() * amount;
     }
   }
