@@ -1,12 +1,10 @@
-# number-converter
-
-Number to text converter
+# Number to text converter
 
 Languages implemented:
 
 - [x] English
+- [x] Polish
 - [ ] Lithuanian
-- [ ] Polish
 
 ## Installation
 
@@ -31,9 +29,10 @@ pnpm install @unknovvn/number-converter
 ## Usage
 
 ```js
-const { toEnglish } = require("@unknovvn/number-converter");
+const { toEnglish, toPolish } = require("@unknovvn/number-converter");
 
 const englishConvertedNumber = toEnglish(8); // eight
+const polishConverterNumber = toPolish(8); // osiem
 ```
 
 ## Contributors
