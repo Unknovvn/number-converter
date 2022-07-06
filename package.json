@@ -10,7 +10,8 @@
     "prebuild": "rimraf ./lib",
     "build": "tsc -p .",
     "test": "jest",
-    "publish": "npm run build && npm publish --access public"
+    "prepublish": "rimraf ./lib && tsc -p .",
+    "publish": "npm publish --access public"
   },
   "repository": {
     "type": "git",
