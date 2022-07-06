@@ -4,7 +4,7 @@ Languages implemented:
 
 - [x] English
 - [x] Polish
-- [ ] Lithuanian
+- [x] Lithuanian
 
 ## Installation
 
@@ -29,10 +29,15 @@ pnpm install @unknovvn/number-converter
 ## Usage
 
 ```js
-const { toEnglish, toPolish } = require("@unknovvn/number-converter");
+const {
+  toEnglish,
+  toPolish,
+  toLithuanian,
+} = require("@unknovvn/number-converter");
 
 const englishConvertedNumber = toEnglish(8); // eight
-const polishConverterNumber = toPolish(8); // osiem
+const polishConvertedNumber = toPolish(8); // osiem
+const lithuanianConvertedNumber = toLithuanian(8); // aštuoni
 ```
 
 ## Contributors
